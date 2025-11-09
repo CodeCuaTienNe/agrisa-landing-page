@@ -1,268 +1,160 @@
-.phone-wrapper {
+.phone-3d-container {
   width: 100%;
+  height: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  padding: 20px;
   perspective: 1500px;
-  min-height: 600px;
 }
 
-.phone-3d {
+.iphone-mockup {
   position: relative;
-  width: 320px;
-  height: 650px;
+  width: 280px;
+  height: 570px;
   transform-style: preserve-3d;
-  transform: rotateX(5deg) rotateY(-20deg) rotateZ(-3deg);
-  transition: transform 0.6s ease;
-  filter: drop-shadow(30px 40px 60px rgba(0, 0, 0, 0.4))
-          drop-shadow(10px 20px 30px rgba(0, 0, 0, 0.3));
+  transform: rotateY(-12deg) rotateX(5deg) rotateZ(-1deg);
+  filter: drop-shadow(20px 30px 50px rgba(0, 0, 0, 0.3));
 }
 
-.phone-3d:hover {
-  transform: rotateX(0deg) rotateY(-15deg) rotateZ(0deg) translateY(-10px);
-}
-
-.pside {
-  position: absolute;
-  transform-style: preserve-3d;
-}
-
-/* Front face - Main screen */
-.front {
-  width: 320px;
-  height: 650px;
+.iphone-frame {
   position: relative;
-  transform: translateZ(8px);
-}
-
-.front .back {
-  position: absolute;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 50%, #0a0a0a 100%);
+  background: linear-gradient(145deg, #2a2a2a 0%, #1a1a1a 50%, #0f0f0f 100%);
   border-radius: 45px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  padding: 8px;
+  box-shadow:
+    inset 0 0 0 2px rgba(255, 255, 255, 0.1),
+    0 0 0 1px rgba(0, 0, 0, 0.5);
+  transform: translateZ(10px);
 }
 
-.front .layerZero {
-  position: relative;
+/* Mặt lưng */
+.iphone-frame::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  background: #0a0a0a;
+  background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 50%, #0a0a0a 100%);
   border-radius: 45px;
-  padding: 4px;
-  box-sizing: border-box;
-  z-index: 2;
+  transform: translateZ(-10px);
+  z-index: -1;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
-.screen {
-  width: 100%;
-  height: 100%;
-  background: #000;
-  border-radius: 42px;
-  overflow: hidden;
-  position: relative;
-}
-
-/* Dynamic Island - Đúng tỷ lệ iPhone 15 Pro */
+/* Dynamic Island */
 .dynamic-island {
   position: absolute;
-  top: 15px;
+  top: 18px;
   left: 50%;
   transform: translateX(-50%);
-  width: 110px;
-  height: 32px;
+  width: 90px;
+  height: 26px;
   background: #000;
-  border-radius: 18px;
+  border-radius: 16px;
   z-index: 100;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 5px;
   box-shadow:
-    0 8px 16px rgba(0, 0, 0, 0.9),
-    inset 0 1px 1px rgba(255, 255, 255, 0.03);
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    0 4px 8px rgba(0, 0, 0, 0.2),
+    inset 0 1px 1px rgba(255, 255, 255, 0.03),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .island-camera {
-  width: 11px;
-  height: 11px;
+  width: 8px;
+  height: 8px;
   background: radial-gradient(circle at 35% 35%,
-    rgba(80, 120, 160, 0.4) 0%,
-    rgba(20, 40, 60, 0.6) 40%,
+    rgba(80, 120, 160, 0.5) 0%,
+    rgba(20, 40, 60, 0.7) 40%,
     #000 100%);
   border-radius: 50%;
   box-shadow:
-    inset 0 0 3px rgba(100, 150, 200, 0.3),
-    0 0 6px rgba(0, 0, 0, 0.8);
+    inset 0 0 3px rgba(100, 150, 200, 0.4),
+    0 0 5px rgba(0, 0, 0, 0.8);
 }
 
 .island-dot {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
   background: radial-gradient(circle,
-    rgba(255, 80, 70, 0.8) 0%,
-    rgba(180, 40, 30, 0.9) 100%);
+    rgba(255, 80, 70, 0.9) 0%,
+    rgba(180, 40, 30, 1) 100%);
   border-radius: 50%;
-  box-shadow: 0 0 6px rgba(255, 60, 50, 0.6);
+  box-shadow: 0 0 6px rgba(255, 60, 50, 0.7);
+}
+
+/* Màn hình */
+.iphone-screen {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  border-radius: 38px;
+  overflow: hidden;
+  position: relative;
 }
 
 .screen-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-/* Left side (visible when tilted) */
-.leftSide {
-  width: 16px;
-  height: 650px;
-  position: absolute;
-  left: 0;
-  top: 0;
-  background: linear-gradient(180deg,
-    #1a1a1a 0%,
-    #0f0f0f 20%,
-    #0a0a0a 50%,
-    #0f0f0f 80%,
-    #1a1a1a 100%);
-  border-radius: 45px 0 0 45px;
-  transform: rotateY(-90deg);
-  transform-origin: right;
-}
-
-.leftSide .sidebottom {
-  display: none;
-}
-
-.card {
-  display: none;
-}
-
-/* Power button */
-.leftSide::before {
-  content: '';
-  position: absolute;
-  right: 0;
-  top: 140px;
-  width: 4px;
-  height: 80px;
-  background: linear-gradient(180deg, #0a0a0a, #1a1a1a);
-  border-radius: 2px 0 0 2px;
-  box-shadow: inset -1px 0 2px rgba(0, 0, 0, 0.5);
-}
-
-/* Volume buttons */
-.leftSide::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  top: 180px;
-  width: 4px;
-  height: 60px;
-  background: linear-gradient(180deg, #0a0a0a, #1a1a1a);
-  border-radius: 2px 0 0 2px;
-  box-shadow: inset -1px 0 2px rgba(0, 0, 0, 0.5);
-}
-
-/* Bottom side */
-.bottom {
-  width: 320px;
-  height: 16px;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  background: linear-gradient(90deg,
-    #1a1a1a 0%,
-    #0a0a0a 50%,
-    #1a1a1a 100%);
-  border-radius: 0 0 45px 45px;
-  transform: rotateX(90deg);
-  transform-origin: top;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-}
-
-.speaker {
-  display: flex;
-  gap: 2px;
-}
-
-.spDot {
-  width: 1px;
-  height: 1px;
-  background: #000;
-  border-radius: 50%;
-}
-
-.conector {
-  width: 12px;
-  height: 4px;
-  background: #000;
-  border-radius: 1px;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  transform: translateZ(0);
 }
 
 /* Responsive */
-@media (max-width: 1024px) {
-  .phone-3d {
-    width: 280px;
-    height: 570px;
-  }
-
-  .front {
-    width: 280px;
-    height: 570px;
-  }
-
-  .leftSide {
-    height: 570px;
-  }
-
-  .bottom {
-    width: 280px;
-  }
-}
-
-@media (max-width: 768px) {
-  .phone-wrapper {
-    min-height: 500px;
-  }
-
-  .phone-3d {
+@media (max-width: 1200px) {
+  .iphone-mockup {
     width: 240px;
     height: 490px;
-    transform: rotateX(3deg) rotateY(-15deg) rotateZ(-2deg);
-  }
-
-  .front {
-    width: 240px;
-    height: 490px;
-  }
-
-  .leftSide {
-    height: 490px;
-  }
-
-  .bottom {
-    width: 240px;
   }
 
   .dynamic-island {
-    width: 88px;
+    width: 85px;
     height: 26px;
-    top: 12px;
-    border-radius: 15px;
+    top: 16px;
   }
 
   .island-camera {
-    width: 9px;
-    height: 9px;
+    width: 8px;
+    height: 8px;
   }
 
   .island-dot {
     width: 5px;
     height: 5px;
+  }
+}
+
+@media (max-width: 768px) {
+  .iphone-mockup {
+    width: 200px;
+    height: 410px;
+    transform: rotateY(-10deg) rotateX(4deg) rotateZ(-1deg);
+  }
+
+  .dynamic-island {
+    width: 70px;
+    height: 22px;
+    top: 14px;
+    border-radius: 14px;
+  }
+
+  .island-camera {
+    width: 7px;
+    height: 7px;
+  }
+
+  .island-dot {
+    width: 4px;
+    height: 4px;
   }
 }
