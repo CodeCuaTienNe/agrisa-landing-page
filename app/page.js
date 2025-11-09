@@ -1,10 +1,11 @@
+import Documents from "@/components/Documents";
+import DownloadSection from "@/components/Download";
+import Features from "@/components/Features";
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import Features from "@/components/Features";
-import DownloadSection from "@/components/Download";
-import Documents from "@/components/Documents";
+import InsurancePartner from "@/components/InsurancePartner";
 import Terms from "@/components/Terms";
-import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <Hero />
       <Features />
       <DownloadSection />
+      <InsurancePartner />
       <Documents />
       <Terms />
       <Footer />

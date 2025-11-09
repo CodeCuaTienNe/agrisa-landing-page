@@ -21,6 +21,7 @@ export default function Header() {
   const navLinks = [
     { href: "#features", label: "Tính năng" },
     { href: "#download", label: "Tải app" },
+    { href: "#insurance-partner", label: "Đối tác BH" },
     { href: "#documents", label: "Tài liệu" },
     { href: "#terms", label: "Điều khoản" },
   ];
