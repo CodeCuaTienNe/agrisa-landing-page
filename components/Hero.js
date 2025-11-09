@@ -1,26 +1,11 @@
 "use client";
 
-import Assets from "@/assets";
 import { Button } from "antd";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { ChevronDown, Shield } from "lucide-react";
-import { useEffect, useState } from "react";
+import Phone3D from "./Phone3D";
 
 export default function Hero() {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const images = [
-    Assets.HomeActivity,
-    Assets.ListPolicyActivity,
-    Assets.SigninActivity,
-  ];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 3000); // Change image every 3 seconds
-
-    return () => clearInterval(interval);
-  }, [images.length]);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-secondary-100 via-secondary-200 to-primary-100 pt-20 pb-20">
@@ -100,30 +85,14 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          {/* Right Content - Placeholder for image */}
+          {/* Right Content - 3D Phone */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative"
           >
-            <div className="relative bg-black rounded-3xl p-2 shadow-2xl max-w-xs mx-auto">
-              {/* App Screenshots Slideshow */}
-              <div className="aspect-[10/21] bg-white rounded-2xl shadow-xl overflow-hidden">
-                <AnimatePresence mode="wait">
-                  <motion.img
-                    key={currentImageIndex}
-                    src={images[currentImageIndex].src}
-                    alt={`App screenshot ${currentImageIndex + 1}`}
-                    className="w-full h-full object-cover"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.5 }}
-                  />
-                </AnimatePresence>
-              </div>
-            </div>
+            <Phone3D />
 
             {/* Floating Elements */}
             <motion.div
